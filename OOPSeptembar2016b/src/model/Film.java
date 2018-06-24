@@ -11,6 +11,7 @@ public class Film {
 	private String zanr;
 	private int idFilm;
 	private ObservableList<Ocena> ocene;
+	private double prosecnaOcena;
 	
 	public Film(String naslov, Integer godinaProizvodnje, String reziser, String glumci, String zanr, int idFilm) {
 		
@@ -20,9 +21,22 @@ public class Film {
 		this.glumci = glumci;
 		this.zanr = zanr;
 		this.idFilm = idFilm;
+		this.prosecnaOcena = 0;
 		
 		ocene = FXCollections.observableArrayList();
-		
+	}
+
+	public void izracunajProsecnuOcenu() {
+		this.prosecnaOcena = 0;
+		int brojilac = 0;
+		for (Ocena ocena : ocene) {
+			brojilac+=ocena.getOcena();
+		}
+		prosecnaOcena = (double)brojilac/(double)ocene.size();
+	}
+	
+	public double getProsecnaOcena() {
+		return prosecnaOcena;
 	}
 
 	public String getNaslov() {
