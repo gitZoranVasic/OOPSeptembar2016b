@@ -53,7 +53,7 @@ public class PageOne extends Stage{
         
         tvFilmovi = new TableView<>();
         	//tvFilmovi.setMinWidth(getWidth());
-	        TableColumn<Film, String> tcNaslov 			= new TableColumn<>("Naslov");
+	        TableColumn<Film, String> tcNaslov 	= new TableColumn<>("Naslov");
 	        	//tcNaslov.setMinWidth(tvFilmovi.getWidth()/4);
 	        	tcNaslov.setCellValueFactory(new PropertyValueFactory<>("naslov"));
 	        	
@@ -67,7 +67,7 @@ public class PageOne extends Stage{
 		        	
 	        TableColumn<Film, String> tcZanr 			= new TableColumn<>("Zanr");
 		        //tcGodina.setMinWidth(tvFilmovi.getWidth()/4);
-	        	tcGodina.setCellValueFactory(new PropertyValueFactory<>("zanr"));
+	        	tcZanr.setCellValueFactory(new PropertyValueFactory<>("zanr"));
         
 	        tvFilmovi.getColumns().addAll(tcNaslov,
 	        							  tcGodina,
