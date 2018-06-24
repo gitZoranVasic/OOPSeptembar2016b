@@ -6,9 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,6 +33,9 @@ public class PageOne extends Stage{
     private TableView<Film> tvFilmovi;
 
     public PageOne(Baza baza) {
+    	setHeight(500);
+        setWidth(480);
+    	
         this.baza = baza;
         tfNaslov = new TextField();
         
@@ -45,7 +50,30 @@ public class PageOne extends Stage{
         	
         btnPretrazi = new Button("Pretrazi");
         btnOceni = new Button("Oceni");
+        
         tvFilmovi = new TableView<>();
+        	//tvFilmovi.setMinWidth(getWidth());
+	        TableColumn<Film, String> tcNaslov 			= new TableColumn<>("Naslov");
+	        	//tcNaslov.setMinWidth(tvFilmovi.getWidth()/4);
+	        	tcNaslov.setCellValueFactory(new PropertyValueFactory<>("naslov"));
+	        	
+	        TableColumn<Film, String> tcGodina 			= new TableColumn<>("Godina");
+	        	//tcGodina.setMinWidth(tvFilmovi.getWidth()/4);
+	        	tcGodina.setCellValueFactory(new PropertyValueFactory<>("godinaProizvodnje"));
+	        	
+	        TableColumn<Film, Double> tcProsecnaOcena 	= new TableColumn<>("Prosecna Ocena");
+		        //tcProsecnaOcena.setMinWidth(tvFilmovi.getWidth()/4);
+		        tcProsecnaOcena.setCellValueFactory(new PropertyValueFactory<>("prosecnaOcena"));
+		        	
+	        TableColumn<Film, String> tcZanr 			= new TableColumn<>("Zanr");
+		        //tcGodina.setMinWidth(tvFilmovi.getWidth()/4);
+	        	tcGodina.setCellValueFactory(new PropertyValueFactory<>("zanr"));
+        
+	        tvFilmovi.getColumns().addAll(tcNaslov,
+	        							  tcGodina,
+	        							  tcProsecnaOcena,
+	        							  tcZanr);
+	        tvFilmovi.setItems(baza.getFilmovi());
 
         VBox mainLayout = new VBox(20);
 
@@ -67,8 +95,7 @@ public class PageOne extends Stage{
 
         Scene sc = new Scene(mainLayout);
         setScene(sc);
-        setHeight(500);
-        setWidth(480);
+        
         show();
         
     }

@@ -27,6 +27,10 @@ public class Baza {
 		
 	}
 	
+	public ObservableList<Film> getFilmovi() {
+		return filmovi;
+	}
+
 	private void izracunajProsecneOcene() {
 		for (Film film : filmovi) {
 			film.izracunajProsecnuOcenu();
@@ -40,7 +44,7 @@ public class Baza {
 			String line;
 			while((line = buffer.readLine()) != null) {
 				String parseMain[] = line.split(";");
-				Film film = new Film(parseMain[1], Integer.parseInt(parseMain[1]), parseMain[2], parseMain[3], parseMain[4], Integer.parseInt(parseMain[5]));
+				Film film = new Film(parseMain[0], Integer.parseInt(parseMain[1]), parseMain[2], parseMain[3], parseMain[4], Integer.parseInt(parseMain[5]));
 				filmovi.add(film);
 			}
 		} catch (Exception e) {

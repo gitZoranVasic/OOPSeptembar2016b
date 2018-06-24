@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 public class Film {
 	private String naslov;
-	private Integer godinaProizvodnje;
+	private int godinaProizvodnje;
 	private String reziser;
 	private String glumci;
 	private String zanr;
