@@ -1,5 +1,7 @@
 package view;
 
+import controller.BtnOceniController;
+import controller.BtnPretraziController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -37,6 +39,7 @@ public class PageOne extends Stage{
         setWidth(480);
     	
         this.baza = baza;
+        
         tfNaslov = new TextField();
         
         rbGroup = new ToggleGroup();
@@ -49,7 +52,10 @@ public class PageOne extends Stage{
         	rbDeoNaslova.setToggleGroup(rbGroup);
         	
         btnPretrazi = new Button("Pretrazi");
+        	btnPretrazi.setOnAction(new BtnPretraziController(baza, this));
+       
         btnOceni = new Button("Oceni");
+        	btnOceni.setOnAction(new BtnOceniController(baza, this));
         
         tvFilmovi = new TableView<>();
         	//tvFilmovi.setMinWidth(getWidth());

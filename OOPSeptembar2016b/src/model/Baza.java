@@ -19,6 +19,32 @@ public class Baza {
 		ucitajBazu();
 	}
 	
+	public ObservableList<Film> filtrirajFilmove(boolean tacanNaziv, String naslov) {
+		ObservableList<Film> filtriraniFilmovi = FXCollections.observableArrayList();
+		
+		
+		//filter je ovakakav samo zato sto ima samo jedan filter tako da nema potrebe da prolazi kroz bilo sta ako je prazan!
+		if(naslov != null && !(naslov.equals(""))) {
+		for (Film film : filmovi) {
+				if(tacanNaziv) {
+					if(film.getNaslov().toLowerCase().equals(naslov.toLowerCase())) {
+						filtriraniFilmovi.add(film);
+					}
+				}else {
+					if(film.getNaslov().toLowerCase().contains(naslov.toLowerCase())) {
+						filtriraniFilmovi.add(film);
+					}
+				}
+			}
+			
+		}else {
+			return filmovi;
+		}
+		
+		return filtriraniFilmovi;
+		
+	}
+	
 	public void ucitajBazu() {
 		ucitajBazuFilmova();
 		ucitajBazuOcena();
